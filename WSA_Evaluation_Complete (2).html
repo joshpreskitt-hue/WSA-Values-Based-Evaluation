@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WSA Growth & Values Profile</title>
+    <style>
+        * { box-sizing: border-box; }
+        
+        @media print {
+            body { margin: 0; padding: 5mm; font-size: 10pt; }
+            .no-print { display: none !important; }
+            .page-break { page-break-before: always; }
+            .container { box-shadow: none; }
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.4;
+            color: #333;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 15px;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0 0 8px 0;
+            font-size: 28px;
+        }
+        
+        .header p {
+            margin: 3px 0;
+            font-size: 14px;
+        }
+        
+        .setup-banner {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .setup-banner h3 {
+            margin: 0 0 10px 0;
+            color: #997404;
+            font-size: 15px;
+        }
+        
+        .setup-banner p {
+            margin: 5px 0;
+            font-size: 12px;
+        }
+        
+        .setup-banner input {
+            width: 100%;
+            padding: 8px;
+            border: 2px solid #ffc107;
+            border-radius: 4px;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+        
+        .setup-banner button {
+            background: #ffc107;
+            color: #997404;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+        
+        .setup-banner button:hover {
+            background: #e0a800;
+        }
+        
+        .setup-banner.configured {
+            background: #d1e7dd;
+            border-color: #198754;
+        }
+        
+        .setup-banner.configured h3 {
+            color: #0a3622;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .info-field {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .info-field.span-2 {
+            grid-column: span 2;
+        }
+        
+        .info-field.span-3 {
+            grid-column: span 3;
+        }
+        
+        .info-field label {
+            font-weight: bold;
+            font-size: 11px;
+            color: #555;
+            margin-bottom: 4px;
+        }
+        
+        .info-field input,
+        .info-field select {
+            border: none;
+            border-bottom: 2px solid #ccc;
+            padding: 6px 0;
+            font-size: 13px;
+            background: transparent;
+        }
+        
+        .instructions {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            font-size: 11px;
+        }
+        
+        .instructions h3 {
+            margin: 0 0 10px 0;
+            color: #667eea;
+            font-size: 15px;
+        }
+        
+        .rating-guide {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 10px 0;
+        }
+        
+        .rating-guide-box {
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        
+        .rating-guide-box.needs {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            color: #997404;
+        }
+        
+        .rating-guide-box.meets {
+            background: #cfe2ff;
+            border: 2px solid #0d6efd;
+            color: #084298;
+        }
+        
+        .rating-guide-box.exceeds {
+            background: #d1e7dd;
+            border: 2px solid #198754;
+            color: #0a3622;
+        }
+        
+        .rating-guide-box .range {
+            font-size: 18px;
+            display: block;
+            margin-bottom: 3px;
+        }
+        
+        .instructions-tip {
+            background: #fff9e6;
+            border: 1px solid #ffd700;
+            padding: 8px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-size: 10px;
+            font-style: italic;
+        }
+        
+        .criterion-section {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            background: white;
+            position: relative;
+        }
+        
+        .criterion-section.strength {
+            border-color: #198754;
+            background: #f0fdf4;
+        }
+        
+        .criterion-section.growth {
+            border-color: #ffc107;
+            background: #fffef0;
+        }
+        
+        .criterion-section.na {
+            opacity: 0.5;
+            background: #f8f9fa;
+        }
+        
+        .criterion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .criterion-title h3 {
+            margin: 0 0 3px 0;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        .criterion-title .motto {
+            font-style: italic;
+            color: #666;
+            font-size: 11px;
+        }
+        
+        .priority-markers {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .priority-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 10px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .priority-checkbox input[type="checkbox"] {
+            cursor: pointer;
+        }
+        
+        .priority-checkbox.strength-check {
+            background: #d1e7dd;
+            border-color: #198754;
+        }
+        
+        .priority-checkbox.growth-check {
+            background: #fff3cd;
+            border-color: #ffc107;
+        }
+        
+        .priority-checkbox.na-check {
+            background: #e9ecef;
+            border-color: #6c757d;
+        }
+        
+        .rating-container {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 12px 0;
+        }
+        
+        .rating-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .rating-label strong {
+            font-size: 12px;
+        }
+        
+        .current-score {
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 13px;
+        }
+        
+        .rating-scale {
+            display: flex;
+            justify-content: space-between;
+            gap: 4px;
+        }
+        
+        .rating-box {
+            flex: 1;
+            height: 32px;
+            border: 2px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border-radius: 4px;
+            background: white;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .rating-box:hover {
+            background: #f0f0f0;
+        }
+        
+        .rating-box.selected {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .rubric-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 12px 0;
+        }
+        
+        .rubric-column {
+            border-radius: 6px;
+            padding: 10px;
+            border: 2px solid;
+            transition: all 0.3s;
+        }
+        
+        .rubric-column.needs {
+            background: #fff3cd;
+            border-color: #ffc107;
+        }
+        
+        .rubric-column.meets {
+            background: #cfe2ff;
+            border-color: #0d6efd;
+        }
+        
+        .rubric-column.exceeds {
+            background: #d1e7dd;
+            border-color: #198754;
+        }
+        
+        .rubric-column.highlighted {
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.5);
+            transform: scale(1.02);
+        }
+        
+        .rubric-column h4 {
+            margin: 0 0 6px 0;
+            font-size: 12px;
+        }
+        
+        .rubric-column.needs h4 { color: #997404; }
+        .rubric-column.meets h4 { color: #084298; }
+        .rubric-column.exceeds h4 { color: #0a3622; }
+        
+        .rubric-column ul {
+            margin: 0;
+            padding-left: 14px;
+            font-size: 9.5px;
+            line-height: 1.4;
+        }
+        
+        .rubric-column li {
+            margin: 5px 0;
+        }
+        
+        .comments-section {
+            margin-top: 10px;
+        }
+        
+        .comments-section label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 11px;
+        }
+        
+        .comments-box {
+            width: 100%;
+            min-height: 50px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            padding: 6px;
+            font-size: 10px;
+            line-height: 1.4;
+            font-family: Arial, sans-serif;
+        }
+        
+        .summary-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e3f2fd 100%);
+            border: 3px solid #667eea;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 25px;
+        }
+        
+        .summary-section h2 {
+            margin: 0 0 15px 0;
+            text-align: center;
+            font-size: 20px;
+            color: #667eea;
+        }
+        
+        .total-score {
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: #667eea;
+            margin: 15px 0;
+        }
+        
+        .score-interpretation {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 6px;
+            padding: 12px;
+            margin: 15px 0;
+        }
+        
+        .score-interpretation h4 {
+            margin: 0 0 8px 0;
+            font-size: 13px;
+            color: #667eea;
+        }
+        
+        .score-levels {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            font-size: 11px;
+        }
+        
+        .score-level {
+            padding: 6px;
+            border-radius: 4px;
+            background: #f8f9fa;
+        }
+        
+        .score-level strong {
+            color: #667eea;
+        }
+        
+        .score-breakdown {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin: 15px 0;
+        }
+        
+        .score-category {
+            text-align: center;
+            padding: 12px;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+        
+        .score-category.needs {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            color: #997404;
+        }
+        
+        .score-category.meets {
+            background: #cfe2ff;
+            border: 2px solid #0d6efd;
+            color: #084298;
+        }
+        
+        .score-category.exceeds {
+            background: #d1e7dd;
+            border: 2px solid #198754;
+            color: #0a3622;
+        }
+        
+        .score-category .number {
+            font-size: 32px;
+            display: block;
+            margin: 5px 0;
+        }
+        
+        .score-category .label {
+            font-size: 10px;
+            display: block;
+        }
+        
+        .priorities-summary {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .priorities-summary h3 {
+            margin: 0 0 10px 0;
+            font-size: 15px;
+            color: #667eea;
+        }
+        
+        .priorities-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .priority-list {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 6px;
+            min-height: 80px;
+        }
+        
+        .priority-list h4 {
+            margin: 0 0 8px 0;
+            font-size: 12px;
+        }
+        
+        .priority-list.strengths h4 {
+            color: #198754;
+        }
+        
+        .priority-list.growth h4 {
+            color: #ffc107;
+        }
+        
+        .priority-list ul {
+            margin: 0;
+            padding-left: 18px;
+            font-size: 11px;
+        }
+        
+        .priority-list li {
+            margin: 4px 0;
+        }
+        
+        .goals-section {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .goals-section h3 {
+            margin: 0 0 12px 0;
+            font-size: 15px;
+            color: #667eea;
+        }
+        
+        .goals-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+        
+        .goal-field label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 11px;
+            color: #555;
+        }
+        
+        .goal-input {
+            width: 100%;
+            min-height: 50px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            padding: 8px;
+            font-size: 11px;
+            line-height: 1.5;
+            font-family: Arial, sans-serif;
+        }
+        
+        .quick-wins-section {
+            background: #fff9e6;
+            border: 2px solid #ffd700;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .quick-wins-section h3 {
+            margin: 0 0 10px 0;
+            font-size: 15px;
+            color: #997404;
+        }
+        
+        .quick-wins-section p {
+            margin: 0 0 10px 0;
+            font-size: 11px;
+            color: #666;
+        }
+        
+        .signature-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px dashed #ccc;
+        }
+        
+        .signature-box {
+            border-top: 2px solid #333;
+            padding-top: 8px;
+        }
+        
+        .signature-box label {
+            font-weight: bold;
+            font-size: 11px;
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        .signature-box input {
+            width: 100%;
+            border: none;
+            padding: 4px 0;
+            font-size: 12px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .action-button {
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+        
+        .print-button {
+            background: #667eea;
+            color: white;
+        }
+        
+        .print-button:hover {
+            background: #5568d3;
+        }
+        
+        .submit-button {
+            background: #198754;
+            color: white;
+        }
+        
+        .submit-button:hover {
+            background: #157347;
+        }
+        
+        .submit-button:disabled {
+            background: #6c757d;
+            cursor: not-allowed;
+        }
+        
+        .status-message {
+            text-align: center;
+            padding: 12px;
+            border-radius: 6px;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        
+        .status-message.success {
+            background: #d1e7dd;
+            color: #0a3622;
+            border: 2px solid #198754;
+        }
+        
+        .status-message.error {
+            background: #f8d7da;
+            color: #842029;
+            border: 2px solid #dc3545;
+        }
+        
+        .status-message.info {
+            background: #cfe2ff;
+            color: #084298;
+            border: 2px solid #0d6efd;
+        }
+    </style>
+</head>
+<body>
+    <div class="action-buttons no-print">
+        <button class="action-button print-button" onclick="window.print()">🖨️ Print Evaluation</button>
+        <button class="action-button submit-button" id="submitButton" onclick="submitEvaluation()">💾 Submit Evaluation</button>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>WSA Growth & Values Profile</h1>
+            <p><strong>Wayne STEM Academy - Experience the SPARK!</strong></p>
+            <p>Comprehensive Growth & Values Review</p>
+        </div>
+        
+        <div class="setup-banner no-print" id="setupBanner">
+            <h3>⚙️ Configuration Required</h3>
+            <p><strong>Paste your Google Apps Script Web App URL below:</strong></p>
+            <input type="text" id="webAppUrl" placeholder="https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec">
+            <button onclick="saveWebAppUrl()">Save Configuration</button>
+        </div>
+        
+        <div id="statusMessage"></div>
+        
+        <div class="info-grid">
+            <div class="info-field">
+                <label>Team Member:</label>
+                <input type="text" id="teamMember" required>
+            </div>
+            <div class="info-field">
+                <label>Reviewer:</label>
+                <input type="text" id="reviewer" required>
+            </div>
+            <div class="info-field">
+                <label>Date:</label>
+                <input type="date" id="evalDate" required>
+            </div>
+            <div class="info-field">
+                <label>Review Type:</label>
+                <select id="evalType">
+                    <option>Self-Evaluation</option>
+                    <option>Leadership Evaluation</option>
+                </select>
+            </div>
+            <div class="info-field">
+                <label>Role Category:</label>
+                <select id="roleCategory" onchange="render()">
+                    <option value="Instructional Staff">Instructional Staff</option>
+                    <option value="Leadership">Leadership</option>
+                    <option value="Operations Staff">Operations Staff</option>
+                </select>
+            </div>
+            <div class="info-field">
+                <label>Team Member Email:</label>
+                <input type="email" id="teamMemberEmail" placeholder="name@waynestem.org" required>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h3>📋 Quick Guide to Rating</h3>
+            
+            <div class="rating-guide">
+                <div class="rating-guide-box needs">
+                    <span class="range">1-3</span>
+                    Needs Development
+                </div>
+                <div class="rating-guide-box meets">
+                    <span class="range">4-6</span>
+                    Meets Expectations
+                </div>
+                <div class="rating-guide-box exceeds">
+                    <span class="range">7-9</span>
+                    Exceeds Expectations
+                </div>
+            </div>
+            
+            <div class="instructions-tip">
+                💡 <strong>Pro Tip:</strong> When in doubt, choose the middle of the range (2, 5, or 8). Mark your Top 3 Strengths with ✅ and 1-2 Growth Areas with 🎯 as you go!
+            </div>
+        </div>
+        
+        <div id="criteriaContainer"></div>
+        
+        <div class="summary-section">
+            <h2>📊 Evaluation Summary</h2>
+            
+            <div class="total-score">
+                Total Score: <span id="totalScore">0</span> / 90
+            </div>
+            
+            <div class="score-interpretation">
+                <h4>📈 Score Interpretation Guide</h4>
+                <div class="score-levels">
+                    <div class="score-level"><strong>75-90:</strong> Exceptional Performance</div>
+                    <div class="score-level"><strong>60-74:</strong> Strong Performance</div>
+                    <div class="score-level"><strong>45-59:</strong> Solid Performance</div>
+                    <div class="score-level"><strong>Below 45:</strong> Needs Development Focus</div>
+                </div>
+            </div>
+            
+            <div class="score-breakdown">
+                <div class="score-category needs">
+                    <span class="label">Needs Development</span>
+                    <span class="number" id="needsCount">0</span>
+                    <span class="label">values</span>
+                </div>
+                <div class="score-category meets">
+                    <span class="label">Meets Expectations</span>
+                    <span class="number" id="meetsCount">0</span>
+                    <span class="label">values</span>
+                </div>
+                <div class="score-category exceeds">
+                    <span class="label">Exceeds Expectations</span>
+                    <span class="number" id="exceedsCount">0</span>
+                    <span class="label">values</span>
+                </div>
+            </div>
+            
+            <div class="priorities-summary">
+                <h3>⭐ Key Takeaways</h3>
+                <div class="priorities-grid">
+                    <div class="priority-list strengths">
+                        <h4>✅ Top Strengths to Celebrate:</h4>
+                        <ul id="strengthsList">
+                            <li style="color: #999;">Select strengths above using ✅ checkboxes</li>
+                        </ul>
+                    </div>
+                    <div class="priority-list growth">
+                        <h4>🎯 Growth Focus Areas:</h4>
+                        <ul id="growthList">
+                            <li style="color: #999;">Select growth areas above using 🎯 checkboxes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quick-wins-section">
+                <h3>🚀 Quick Wins - Next 30 Days</h3>
+                <p>Based on this evaluation, what are 2-3 specific actions this person can take in the next 30 days?</p>
+                <textarea class="goal-input" id="quickWins" rows="3" placeholder="Example: Shadow a colleague during their most challenging class period; Attend the upcoming data analysis workshop; Practice one new active listening technique per week..."></textarea>
+            </div>
+            
+            <div class="goals-section">
+                <h3>💭 Reflection & Goals</h3>
+                <div class="goals-grid">
+                    <div class="goal-field">
+                        <label>What I'm Most Proud Of:</label>
+                        <textarea class="goal-input" id="proudOf" rows="2" placeholder="Share specific accomplishments or moments of growth..."></textarea>
+                    </div>
+                    <div class="goal-field">
+                        <label>Where I Want to Grow:</label>
+                        <textarea class="goal-input" id="wantToGrow" rows="2" placeholder="Identify 1-2 specific areas for development..."></textarea>
+                    </div>
+                    <div class="goal-field">
+                        <label>Support I Need:</label>
+                        <textarea class="goal-input" id="supportNeeded" rows="2" placeholder="What resources, training, or coaching would help you succeed?"></textarea>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="signature-section">
+                <div class="signature-box">
+                    <label>Team Member Signature:</label>
+                    <input type="text" id="teamMemberSig">
+                    <label style="margin-top: 10px;">Date:</label>
+                    <input type="text" id="teamMemberDate">
+                </div>
+                <div class="signature-box">
+                    <label>Reviewer Signature:</label>
+                    <input type="text" id="reviewerSig">
+                    <label style="margin-top: 10px;">Date:</label>
+                    <input type="text" id="reviewerDate">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const criteria = [
+            { id: "ownership", title: "Ownership & Initiative", motto: "You don't wait to be asked. You just handle it." },
+            { id: "solutionOriented", title: "Solution-Oriented", motto: "You stay out of drama and focus on solutions." },
+            { id: "resourcefulness", title: "Resourcefulness", motto: "You fix what is broken instead of complaining about it." },
+            { id: "growthMindset", title: "Growth Mindset", motto: "You admit what you don't know, then learn fast." },
+            { id: "actionOriented", title: "Action-Oriented", motto: "You turn ideas into action instead of just talking." },
+            { id: "activeListening", title: "Active Listening", motto: "You listen with empathy - really listen." },
+            { id: "strategicThinking", title: "Strategic Thinking", motto: "You spot trends that others overlook." },
+            { id: "emotionalIntelligence", title: "Emotional Intelligence", motto: "You handle tough situations with emotional character." },
+            { id: "persistence", title: "Persistence", motto: "You finish what you start." },
+            { id: "supportive", title: "Supportive", motto: "You make everyone's job easier, not harder." }
+        ];
+
+        const rubrics = {
+            "Instructional Staff": {
+                ownership: { 
+                    needs: ["Rarely anticipates student needs", "Last-minute lesson planning"],
+                    meets: ["Responds to requests but rarely initiates", "Creates lessons when asked"],
+                    exceeds: ["Consistently anticipates needs proactively", "Independently addresses learning gaps"]
+                },
+                solutionOriented: {
+                    needs: ["Focuses on complaining vs. solving", "Avoids collaborative problem-solving"],
+                    meets: ["Attempts solutions for classroom issues", "Generally maintains positive attitude"],
+                    exceeds: ["Identifies root causes proactively", "Actively facilitates teamwork"]
+                },
+                resourcefulness: {
+                    needs: ["Complains about lack of materials", "Wastes classroom supplies"],
+                    meets: ["Utilizes existing resources as directed", "Generally mindful of usage"],
+                    exceeds: ["Finds creative solutions to gaps", "Maximizes materials and technology"]
+                },
+                growthMindset: {
+                    needs: ["Resists new teaching strategies", "Defensive when receiving feedback"],
+                    meets: ["Participates in required PD", "Generally open to feedback"],
+                    exceeds: ["Actively seeks learning opportunities", "Implements feedback consistently"]
+                },
+                actionOriented: {
+                    needs: ["Ideas without classroom implementation", "Struggles to meet deadlines"],
+                    meets: ["Completes tasks, meets most deadlines", "Occasional reminders needed"],
+                    exceeds: ["Consistently implements ideas to practice", "Self-starter on new projects"]
+                },
+                activeListening: {
+                    needs: ["Often interrupts students/colleagues", "Makes others feel unheard"],
+                    meets: ["Generally listens attentively", "Can paraphrase accurately"],
+                    exceeds: ["Creates safe environment for sharing", "Asks clarifying questions"]
+                },
+                strategicThinking: {
+                    needs: ["Misses obvious patterns in data", "Focuses only on today's lesson"],
+                    meets: ["Occasionally notices trends", "Has some goals but no plan"],
+                    exceeds: ["Identifies subtle patterns consistently", "Connects daily to long-term goals"]
+                },
+                emotionalIntelligence: {
+                    needs: ["Frequently loses composure", "Escalates conflict with students"],
+                    meets: ["Generally maintains composure", "Attempts de-escalation"],
+                    exceeds: ["Maintains composure in all situations", "Effectively manages difficult conversations"]
+                },
+                persistence: {
+                    needs: ["Gives up on struggling students", "Abandons new strategies quickly"],
+                    meets: ["Committed but can get discouraged", "Usually follows through"],
+                    exceeds: ["Unwavering commitment to all students", "Views setbacks as learning opportunities"]
+                },
+                supportive: {
+                    needs: ["Avoids supporting colleagues", "Hoards resources and lesson plans"],
+                    meets: ["Helps colleagues when asked directly", "Participates as required"],
+                    exceeds: ["Proactively offers assistance", "Fosters collaborative environment"]
+                }
+            },
+            "Leadership": {
+                ownership: {
+                    needs: ["Blames others for shortcomings", "Rarely takes initiative"],
+                    meets: ["Takes assigned responsibility", "Participates in school planning"],
+                    exceeds: ["Proactively owns school-wide challenges", "Champions new projects"]
+                },
+                solutionOriented: {
+                    needs: ["Complains about systemic issues", "Avoids difficult conversations"],
+                    meets: ["Attempts solutions for department", "Generally professional attitude"],
+                    exceeds: ["Identifies root causes of systems issues", "Facilitates difficult conversations"]
+                },
+                resourcefulness: {
+                    needs: ["Complains about budget limits", "Wastes school resources"],
+                    meets: ["Works within budget constraints", "Generally mindful of resources"],
+                    exceeds: ["Finds creative solutions despite limits", "Builds partnerships and seeks funding"]
+                },
+                growthMindset: {
+                    needs: ["Resists new leadership strategies", "Defensive to feedback"],
+                    meets: ["Attends required leadership training", "Generally open to feedback"],
+                    exceeds: ["Actively seeks growth opportunities", "Models vulnerability by admitting gaps"]
+                },
+                actionOriented: {
+                    needs: ["Plans rarely implemented", "Allows initiatives to stall"],
+                    meets: ["Implements with moderate success", "Generally follows through"],
+                    exceeds: ["Consistently translates plans to results", "Drives initiatives to completion"]
+                },
+                activeListening: {
+                    needs: ["Dominates meetings", "Makes staff feel unheard"],
+                    meets: ["Listens in one-on-one settings", "Can summarize concerns accurately"],
+                    exceeds: ["Creates culture of psychological safety", "Uncovers root issues through questions"]
+                },
+                strategicThinking: {
+                    needs: ["Focuses only on day-to-day operations", "Lacks long-term vision"],
+                    meets: ["Focuses on current school year goals", "Understands immediate impact"],
+                    exceeds: ["Develops clear multi-year vision", "Connects all decisions to mission"]
+                },
+                emotionalIntelligence: {
+                    needs: ["Loses composure in stressful situations", "Escalates conflict"],
+                    meets: ["Generally maintains composure in public", "Attempts mediation"],
+                    exceeds: ["Maintains composure in all situations", "Intentionally cultivates positive climate"]
+                },
+                persistence: {
+                    needs: ["Abandons initiatives with resistance", "Gives up on struggling staff"],
+                    meets: ["Generally completes initiatives", "Usually follows through"],
+                    exceeds: ["Unwavering commitment to vision", "Views setbacks as organizational learning"]
+                },
+                supportive: {
+                    needs: ["Creates competitive environment", "Withholds information from staff"],
+                    meets: ["Offers support when asked", "Generally professional"],
+                    exceeds: ["Proactively provides resources and time", "Publicly supports, privately coaches"]
+                }
+            },
+            "Operations Staff": {
+                ownership: {
+                    needs: ["Fails to report safety issues", "Requires constant supervision"],
+                    meets: ["Completes daily checklists", "Maintains acceptable standards"],
+                    exceeds: ["Proactively identifies and reports issues", "Suggests improvements"]
+                },
+                solutionOriented: {
+                    needs: ["Complains without offering solutions", "Focuses on blame"],
+                    meets: ["Attempts fixes before reporting", "Generally positive attitude"],
+                    exceeds: ["Identifies root causes", "Approaches challenges with 'how can I help'"]
+                },
+                resourcefulness: {
+                    needs: ["Wastes supplies", "Can't work without usual tool"],
+                    meets: ["Uses supplies appropriately", "Notifies when supplies low"],
+                    exceeds: ["Finds ways to conserve supplies", "Creative solutions when tool unavailable"]
+                },
+                growthMindset: {
+                    needs: ["Resists new procedures", "Defensive when errors pointed out"],
+                    meets: ["Attends required training", "Generally open to feedback"],
+                    exceeds: ["Actively seeks new skills", "Views regulations as safety opportunities"]
+                },
+                actionOriented: {
+                    needs: ["Procrastinates on tasks", "Leaves work incomplete"],
+                    meets: ["Completes tasks within shift", "Steady, consistent pace"],
+                    exceeds: ["Completes efficiently ahead of schedule", "Looks for next task proactively"]
+                },
+                activeListening: {
+                    needs: ["Misunderstands instructions", "Ignores radio calls"],
+                    meets: ["Follows instructions accurately", "Responds to calls timely"],
+                    exceeds: ["Asks clarifying questions", "Anticipates needs from conversations"]
+                },
+                strategicThinking: {
+                    needs: ["Sees immediate task only", "Doesn't anticipate problems"],
+                    meets: ["Understands role in operations", "Follows established routine"],
+                    exceeds: ["Anticipates needs from calendar", "Sees impact on learning environment"]
+                },
+                emotionalIntelligence: {
+                    needs: ["Loses temper with students/staff", "Shows frustration openly"],
+                    meets: ["Generally polite and professional", "Maintains composure usually"],
+                    exceeds: ["Maintains positive, approachable demeanor", "Interacts with genuine warmth"]
+                },
+                persistence: {
+                    needs: ["Abandons difficult tasks", "Easily discouraged"],
+                    meets: ["Completes all assigned tasks", "Follows through on routine"],
+                    exceeds: ["Commitment to solving problems", "Maintains standards even at shift end"]
+                },
+                supportive: {
+                    needs: ["'Not my job' attitude", "Hoards supplies/tools"],
+                    meets: ["Helps when asked", "Participates when asked"],
+                    exceeds: ["Proactively helps busy colleagues", "Steps outside normal duties"]
+                }
+            }
+        };
+
+        let ratings = {};
+        let strengths = new Set();
+        let growthAreas = new Set();
+
+        window.addEventListener('load', function() {
+            const savedUrl = localStorage.getItem('webAppUrl');
+            if (savedUrl) {
+                document.getElementById('webAppUrl').value = savedUrl;
+                document.getElementById('setupBanner').classList.add('configured');
+                document.getElementById('setupBanner').innerHTML = '<h3>✅ Connected to Google Sheets</h3><p>Ready to submit evaluations with automated emails!</p>';
+            }
+            document.getElementById('evalDate').valueAsDate = new Date();
+            render();
+        });
+
+        function saveWebAppUrl() {
+            const url = document.getElementById('webAppUrl').value.trim();
+            if (!url) {
+                showStatus('Please enter a Web App URL', 'error');
+                return;
+            }
+            
+            if (!url.includes('script.google.com')) {
+                showStatus('Please enter a valid Google Apps Script Web App URL', 'error');
+                return;
+            }
+            
+            localStorage.setItem('webAppUrl', url);
+            document.getElementById('setupBanner').classList.add('configured');
+            document.getElementById('setupBanner').innerHTML = '<h3>✅ Connected to Google Sheets</h3><p>Ready to submit evaluations with automated emails!</p>';
+            showStatus('Configuration saved! You can now submit evaluations.', 'success');
+        }
+
+        function showStatus(message, type) {
+            const statusDiv = document.getElementById('statusMessage');
+            statusDiv.className = `status-message ${type}`;
+            statusDiv.textContent = message;
+            statusDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        async function submitEvaluation() {
+            const webAppUrl = localStorage.getItem('webAppUrl');
+            
+            if (!webAppUrl) {
+                showStatus('Please configure Google Sheets connection first (see yellow box above)', 'error');
+                return;
+            }
+            
+            // Validate URL format
+            if (!webAppUrl.includes('script.google.com') || !webAppUrl.includes('/exec')) {
+                showStatus('Invalid Web App URL format. It should end with /exec', 'error');
+                console.error('Invalid URL format:', webAppUrl);
+                return;
+            }
+            
+            // Validate required fields
+            const teamMember = document.getElementById('teamMember').value.trim();
+            const reviewer = document.getElementById('reviewer').value.trim();
+            const teamMemberEmail = document.getElementById('teamMemberEmail').value.trim();
+            
+            if (!teamMember || !reviewer) {
+                showStatus('Please fill in Team Member and Reviewer names', 'error');
+                return;
+            }
+            
+            if (!teamMemberEmail) {
+                showStatus('Please provide Team Member email for automated results', 'error');
+                return;
+            }
+            
+            if (Object.keys(ratings).length < 10) {
+                showStatus('Please rate all 10 values before submitting', 'error');
+                return;
+            }
+            
+            const submitButton = document.getElementById('submitButton');
+            submitButton.disabled = true;
+            submitButton.textContent = '⏳ Submitting & Sending Emails...';
+            
+            const data = {
+                teamMember: teamMember,
+                teamMemberEmail: teamMemberEmail,
+                reviewer: reviewer,
+                date: document.getElementById('evalDate').value,
+                reviewType: document.getElementById('evalType').value,
+                role: document.getElementById('roleCategory').value,
+                totalScore: parseInt(document.getElementById('totalScore').textContent),
+                needsCount: parseInt(document.getElementById('needsCount').textContent),
+                meetsCount: parseInt(document.getElementById('meetsCount').textContent),
+                exceedsCount: parseInt(document.getElementById('exceedsCount').textContent),
+                ratings: ratings,
+                strengths: Array.from(strengths).map(id => criteria.find(c => c.id === id).title).join('; '),
+                growthAreas: Array.from(growthAreas).map(id => criteria.find(c => c.id === id).title).join('; '),
+                quickWins: document.getElementById('quickWins').value,
+                proudOf: document.getElementById('proudOf').value,
+                wantToGrow: document.getElementById('wantToGrow').value,
+                supportNeeded: document.getElementById('supportNeeded').value
+            };
+            
+            console.log('Submitting to:', webAppUrl);
+            console.log('Data:', data);
+            
+            try {
+                const response = await fetch(webAppUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                // Note: With no-cors mode, we can't read the response
+                // We assume success if no error was thrown
+                console.log('Request sent successfully (no-cors mode)');
+                showStatus('✅ Evaluation submitted! Check your Google Sheet and email for confirmation.', 'success');
+                submitButton.textContent = '✅ Submitted!';
+                
+                setTimeout(() => {
+                    submitButton.disabled = false;
+                    submitButton.textContent = '💾 Submit Evaluation';
+                }, 5000);
+                
+            } catch (error) {
+                console.error('Detailed error:', error);
+                console.error('Error name:', error.name);
+                console.error('Error message:', error.message);
+                
+                let errorMsg = '❌ Error: ' + error.message;
+                
+                if (error.message.includes('Failed to fetch')) {
+                    errorMsg = '❌ Connection Error: Cannot reach Google Apps Script. Please check:\n' +
+                               '1. Your Web App URL is correct and ends with /exec\n' +
+                               '2. The script is deployed with "Anyone" access\n' +
+                               '3. You have internet connection\n' +
+                               '\nSee browser console (F12) for details.';
+                }
+                
+                showStatus(errorMsg, 'error');
+                submitButton.disabled = false;
+                submitButton.textContent = '💾 Submit Evaluation';
+            }
+        }
+
+        function render() {
+            const container = document.getElementById('criteriaContainer');
+            const role = document.getElementById('roleCategory').value;
+            container.innerHTML = '';
+            
+            criteria.forEach((c, i) => {
+                const rubric = rubrics[role][c.id];
+                const section = document.createElement('div');
+                section.className = 'criterion-section';
+                section.id = `section-${c.id}`;
+                
+                section.innerHTML = `
+                    <div class="criterion-header">
+                        <div class="criterion-title">
+                            <h3>${i + 1}. ${c.title}</h3>
+                            <p class="motto">"${c.motto}"</p>
+                        </div>
+                        <div class="priority-markers">
+                            <label class="priority-checkbox strength-check">
+                                <input type="checkbox" class="strength-checkbox" data-criterion="${c.id}">
+                                <span>✅ Strength</span>
+                            </label>
+                            <label class="priority-checkbox growth-check">
+                                <input type="checkbox" class="growth-checkbox" data-criterion="${c.id}">
+                                <span>🎯 Growth</span>
+                            </label>
+                            <label class="priority-checkbox na-check">
+                                <input type="checkbox" class="na-checkbox" data-criterion="${c.id}">
+                                <span>N/A</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="rating-container">
+                        <div class="rating-label">
+                            <strong>Select Rating (1-9):</strong>
+                            <span class="current-score" id="score-${c.id}">Not Rated</span>
+                        </div>
+                        <div class="rating-scale" id="rating-${c.id}">
+                            ${[1,2,3,4,5,6,7,8,9].map(n => 
+                                `<div class="rating-box" data-value="${n}" data-criterion="${c.id}">${n}</div>`
+                            ).join('')}
+                        </div>
+                    </div>
+                    
+                    <div class="rubric-grid" id="rubric-${c.id}">
+                        <div class="rubric-column needs" data-range="1-3">
+                            <h4>Needs Development (1-3)</h4>
+                            <ul>${rubric.needs.map(item => `<li>${item}</li>`).join('')}</ul>
+                        </div>
+                        <div class="rubric-column meets" data-range="4-6">
+                            <h4>Meets Expectations (4-6)</h4>
+                            <ul>${rubric.meets.map(item => `<li>${item}</li>`).join('')}</ul>
+                        </div>
+                        <div class="rubric-column exceeds" data-range="7-9">
+                            <h4>Exceeds Expectations (7-9)</h4>
+                            <ul>${rubric.exceeds.map(item => `<li>${item}</li>`).join('')}</ul>
+                        </div>
+                    </div>
+                    
+                    <div class="comments-section">
+                        <label>Comments/Evidence (Optional):</label>
+                        <textarea class="comments-box" id="comments-${c.id}" placeholder="Add specific examples, observations, or context..."></textarea>
+                    </div>
+                `;
+                
+                container.appendChild(section);
+            });
+            
+            // Add event listeners
+            attachEventListeners();
+        }
+
+        function attachEventListeners() {
+            // Rating boxes
+            document.querySelectorAll('.rating-box').forEach(box => {
+                box.addEventListener('click', function() {
+                    const criterion = this.dataset.criterion;
+                    const value = parseInt(this.dataset.value);
+                    
+                    // Clear previous selection
+                    document.querySelectorAll(`[data-criterion="${criterion}"].rating-box`).forEach(b => {
+                        b.classList.remove('selected');
+                    });
+                    
+                    // Set new selection
+                    this.classList.add('selected');
+                    ratings[criterion] = value;
+                    
+                    // Update score display
+                    document.getElementById(`score-${criterion}`).textContent = value;
+                    
+                    // Highlight matching rubric column
+                    highlightRubric(criterion, value);
+                    
+                    // Update summary
+                    updateSummary();
+                });
+            });
+            
+            // Strength checkboxes
+            document.querySelectorAll('.strength-checkbox').forEach(cb => {
+                cb.addEventListener('change', function() {
+                    const criterion = this.dataset.criterion;
+                    const section = document.getElementById(`section-${criterion}`);
+                    
+                    if (this.checked) {
+                        strengths.add(criterion);
+                        section.classList.add('strength');
+                        // Uncheck growth and N/A
+                        document.querySelector(`.growth-checkbox[data-criterion="${criterion}"]`).checked = false;
+                        document.querySelector(`.na-checkbox[data-criterion="${criterion}"]`).checked = false;
+                        growthAreas.delete(criterion);
+                        section.classList.remove('growth', 'na');
+                    } else {
+                        strengths.delete(criterion);
+                        section.classList.remove('strength');
+                    }
+                    updatePriorityLists();
+                });
+            });
+            
+            // Growth checkboxes
+            document.querySelectorAll('.growth-checkbox').forEach(cb => {
+                cb.addEventListener('change', function() {
+                    const criterion = this.dataset.criterion;
+                    const section = document.getElementById(`section-${criterion}`);
+                    
+                    if (this.checked) {
+                        growthAreas.add(criterion);
+                        section.classList.add('growth');
+                        // Uncheck strength and N/A
+                        document.querySelector(`.strength-checkbox[data-criterion="${criterion}"]`).checked = false;
+                        document.querySelector(`.na-checkbox[data-criterion="${criterion}"]`).checked = false;
+                        strengths.delete(criterion);
+                        section.classList.remove('strength', 'na');
+                    } else {
+                        growthAreas.delete(criterion);
+                        section.classList.remove('growth');
+                    }
+                    updatePriorityLists();
+                });
+            });
+            
+            // N/A checkboxes
+            document.querySelectorAll('.na-checkbox').forEach(cb => {
+                cb.addEventListener('change', function() {
+                    const criterion = this.dataset.criterion;
+                    const section = document.getElementById(`section-${criterion}`);
+                    
+                    if (this.checked) {
+                        section.classList.add('na');
+                        // Uncheck strength and growth
+                        document.querySelector(`.strength-checkbox[data-criterion="${criterion}"]`).checked = false;
+                        document.querySelector(`.growth-checkbox[data-criterion="${criterion}"]`).checked = false;
+                        strengths.delete(criterion);
+                        growthAreas.delete(criterion);
+                        section.classList.remove('strength', 'growth');
+                        // Set rating to N/A
+                        ratings[criterion] = 'N/A';
+                        document.getElementById(`score-${criterion}`).textContent = 'N/A';
+                        updateSummary();
+                        updatePriorityLists();
+                    } else {
+                        section.classList.remove('na');
+                        delete ratings[criterion];
+                        document.getElementById(`score-${criterion}`).textContent = 'Not Rated';
+                        updateSummary();
+                    }
+                });
+            });
+        }
+
+        function highlightRubric(criterion, value) {
+            const rubricColumns = document.querySelectorAll(`#rubric-${criterion} .rubric-column`);
+            rubricColumns.forEach(col => col.classList.remove('highlighted'));
+            
+            let targetColumn;
+            if (value >= 1 && value <= 3) {
+                targetColumn = document.querySelector(`#rubric-${criterion} .rubric-column[data-range="1-3"]`);
+            } else if (value >= 4 && value <= 6) {
+                targetColumn = document.querySelector(`#rubric-${criterion} .rubric-column[data-range="4-6"]`);
+            } else if (value >= 7 && value <= 9) {
+                targetColumn = document.querySelector(`#rubric-${criterion} .rubric-column[data-range="7-9"]`);
+            }
+            
+            if (targetColumn) {
+                targetColumn.classList.add('highlighted');
+            }
+        }
+
+        function updateSummary() {
+            let total = 0;
+            let needsCount = 0;
+            let meetsCount = 0;
+            let exceedsCount = 0;
+            
+            Object.values(ratings).forEach(rating => {
+                if (rating !== 'N/A') {
+                    total += rating;
+                    if (rating >= 1 && rating <= 3) needsCount++;
+                    else if (rating >= 4 && rating <= 6) meetsCount++;
+                    else if (rating >= 7 && rating <= 9) exceedsCount++;
+                }
+            });
+            
+            document.getElementById('totalScore').textContent = total;
+            document.getElementById('needsCount').textContent = needsCount;
+            document.getElementById('meetsCount').textContent = meetsCount;
+            document.getElementById('exceedsCount').textContent = exceedsCount;
+        }
+
+        function updatePriorityLists() {
+            // Update strengths list
+            const strengthsList = document.getElementById('strengthsList');
+            if (strengths.size > 0) {
+                strengthsList.innerHTML = Array.from(strengths)
+                    .map(id => `<li>${criteria.find(c => c.id === id).title}</li>`)
+                    .join('');
+            } else {
+                strengthsList.innerHTML = '<li style="color: #999;">Select strengths above using ✅ checkboxes</li>';
+            }
+            
+            // Update growth list
+            const growthList = document.getElementById('growthList');
+            if (growthAreas.size > 0) {
+                growthList.innerHTML = Array.from(growthAreas)
+                    .map(id => `<li>${criteria.find(c => c.id === id).title}</li>`)
+                    .join('');
+            } else {
+                growthList.innerHTML = '<li style="color: #999;">Select growth areas above using 🎯 checkboxes</li>';
+            }
+        }
+    </script>
+</body>
+</html>
